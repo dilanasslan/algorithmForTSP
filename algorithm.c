@@ -1,5 +1,6 @@
-#include<stdio.h>
-#include<stdlib.h>
+#include <stdio.h>
+#include <stdlib.h>
+#include <math.h>
 
 struct node{
     int id,x,y;
@@ -34,7 +35,7 @@ void printLinkedList(struct node *firstPtr){
 }
 	
 void readFileCreatLinkedList(){
-	FILE *file = fopen("/home/rabus/input.txt", "r");
+	FILE *file = fopen("C:/Users/Dilan/Desktop/tsp.txt", "r");
 	int c,x,y, id;
 		do {
 			c = fscanf(file,"%d%d%d",&id,&x,&y);
@@ -45,10 +46,33 @@ void readFileCreatLinkedList(){
 	fclose(file);
 }
 
-int main(void){
+
+
+int CountDistance (){
+	struct node *list;
+	list=head;
+
+	double result;
+	double a;
+	double b;
+
+		a= ((list->next->x) - (list->x));
+		b= ((list->next->y) - (list->y));
+        result= sqrt(pow(a,2) + pow(b,2)) ;
+        printf("result %f", result);
+}
+
+
+
+int main(){
 	
 	readFileCreatLinkedList();
 	printLinkedList(head);
+	CountDistance ();
 	
     return 0;
 }
+
+
+
+
