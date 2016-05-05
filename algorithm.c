@@ -1,5 +1,6 @@
 #include<stdio.h>
 #include<stdlib.h>
+#include<math.h>
 
 struct node{
     int id,x,y;
@@ -45,10 +46,29 @@ void readFileCreatLinkedList(){
 	fclose(file);
 }
 
+int CountDistance (){
+	struct node *list;
+	list=head;
+
+	double result;
+	double a;
+	double b;
+	    
+        while(list!=NULL & list->next!=NULL){
+        a= ((list->next->x) - (list->x));
+	b= ((list->next->y) - (list->y));
+        result= sqrt(pow(a,2) + pow(b,2)) ;
+        printf("id: %d  %d   result %f\n", list->id, list->next->id, result);
+        list=list->next;
+		}
+}
+
+
+
 int main(void){
 	
 	readFileCreatLinkedList();
 	printLinkedList(head);
-	
+	CountDistance();
     return 0;
 }
